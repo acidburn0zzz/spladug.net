@@ -10,8 +10,8 @@
 <![endif]-->
 
 <%block name="metadata">
-<link rel="stylesheet" href="style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="mobile.css" type="text/css" media="screen and (device-width: 480px)">
+<link rel="stylesheet" href="/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/mobile.css" type="text/css" media="screen and (device-width: 480px)">
 <link rel="shortcut icon" href="/favicon.png" type="image/png">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
 </%block>

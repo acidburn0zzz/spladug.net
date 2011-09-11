@@ -18,8 +18,8 @@ Scan('.') >> MatchPath()
     # compress js
     .match(r'\.js', Read() >> CompressJavascript() >> WriteTo(output_root))
 
-    # need to upgrade to clevercss
-    .match(r'\.css', CopyTo(output_root))
+    # turn clevercss into css
+    .match(r'\.ccss', Read() >> ConvertCleverCSS() >> WriteTo(output_root))
 
     # copy webfont files verbatim
     .match(r'\.(svg|eot|ttf|woff)', CopyTo(output_root))
