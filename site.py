@@ -21,10 +21,12 @@ Scan('.') >> MatchPath()
     .match(r'\.js', Read() >> CompressJavascript() >> WriteTo(output_root))
 
     # turn clevercss into css
-    .match(r'\.ccss', Read() >> ConvertCleverCSS() >> WriteTo(output_root))
+    .match(r'\.ccss$', Read() >>
+                       ConvertCleverCSS() >>
+                       WriteTo(output_root))
 
     # copy webfont files verbatim
-    .match(r'\.(svg|eot|ttf|woff)', CopyTo(output_root))
+    .match(r'\.(svg|eot|ttf|woff)$', CopyTo(output_root))
 
     # the favicon
     .match('favicon.png$', CopyTo(output_root))
