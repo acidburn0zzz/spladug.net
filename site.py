@@ -1,7 +1,9 @@
-from modicms import *
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+from modicms import *
+
+
+logging.basicConfig(level=logging.INFO)
 
 output_root = '/var/www'
 
