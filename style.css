@@ -1,0 +1,131 @@
+@font-face{font-family:'FolkSolid';src:url('Folksolid-webfont.eot');src:local('Folk Solid'), url('Folksolid-webfont.woff') format('woff'), url('Folksolid-webfont.ttf') format('truetype'), url('Folksolid-webfont.svg#webfont') format('svg');font-weight:normal;font-style:normal;}
+
+body {
+    overflow-y: scroll;
+    width: 512px;
+    margin: 0 auto;
+    padding: 2em 0;
+    font-family: Georgia, serif;
+    font-size: 16pt;
+}
+
+h1, nav a {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-family: "FolkSolid";
+}
+
+h1 span {
+    display: inline-block;
+    height: 0.7em;
+    line-height: 1.15;
+}
+
+#line-spladug {
+    color: #ef4c29;
+    font-size: 112pt;
+}
+
+    #line-spladug a {
+        margin: 0;
+        padding: 0;
+    }
+
+#line-is-neil {
+    font-size: 143pt;
+}
+
+    #word-is {
+        color: #6ac49e;
+    }
+
+    #word-neil {
+        color: #446bb3;
+    }
+
+#line-williams {
+    font-size: 117pt;
+    color: #446bb3;
+    letter-spacing: -2px;
+}
+
+header a, nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav {
+    position: relative;
+    height: 3em;
+    margin-top: .5em;
+}
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav a {
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+    }
+
+    #link-about, #link-code {
+        top: 0;
+        font-size: 82pt;
+        height: .8em;
+        line-height: 1.1;
+    }
+
+    #link-about {
+        left: 0;
+        color: #ee2369;
+    }
+
+    #link-code {
+        right: 0;
+        color: #80c341;
+    }
+
+    nav a:hover {
+        text-shadow:  -2px  -2px 0 #000,
+                      -2px   2px 0 #000,
+                       2px  -2px 0 #000,
+                       2px   2px 0 #000;
+    }
+
+    #link-about.active, #link-about.active:hover {
+        color: black;
+        text-shadow:  -3px  -3px 0 #ee2369,
+                      -3px   3px 0 #ee2369,
+                       3px  -3px 0 #ee2369,
+                       3px   3px 0 #ee2369;
+    }
+
+    #link-code.active, #link-code.active:hover {
+        color: black;
+        text-shadow:  -3px  -3px 0 #80c341,
+                      -3px   3px 0 #80c341,
+                       3px  -3px 0 #80c341,
+                       3px   3px 0 #80c341;
+    }
+
+.hidden {
+    text-indent: -9999px;
+    position: absolute;
+}
+
+nav + *, footer {
+    border-top: 3px dashed black;
+    margin-top: 2em;
+    padding-top: 1em;
+}
+
+footer {
+    text-align: right;
+}
