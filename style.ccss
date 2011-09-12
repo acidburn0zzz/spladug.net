@@ -5,7 +5,7 @@ name_blue = #446bb3
 @font-face:
     font-family: `'FolkSolid'`
     src: url('Folksolid-webfont.eot')
-    src: `local('Folk Solid')`, url('Folksolid-webfont.woff') `format('woff')`, url('Folksolid-webfont.ttf') `format('truetype')`, url('Folksolid-webfont.svg#webfont') `format('svg')`
+    src: url('Folksolid-webfont.woff') `format('woff')`, url('Folksolid-webfont.ttf') `format('truetype')`, url('Folksolid-webfont.svg#webfont') `format('svg')`
     font-weight: normal
     font-style: normal
 
