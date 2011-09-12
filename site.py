@@ -18,7 +18,10 @@ Scan('.') >> MatchPath()
                      WriteTo(output_root))
 
     # compress js
-    .match(r'\.js', Read() >> CompressJavascript() >> WriteTo(output_root))
+    .match(r'github\.js$', Read() >>
+                           IncludeJavascript() >>
+                           CompressJavascript() >>
+                           WriteTo(output_root))
 
     # turn clevercss into css
     .match(r'\.ccss$', Read() >>
