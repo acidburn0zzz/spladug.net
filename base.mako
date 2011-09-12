@@ -15,6 +15,15 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
 </%block>
 
+<%
+    javascript = context.get('javascript', '')
+    js_files = [j.strip() for j in javascript.split(',') if j.strip()]
+%>
+
+% for url in js_files:
+<script type="text/javascript" src="${url}"></script>
+% endfor
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -28,16 +37,6 @@
   })();
 
 </script>
-
-<%
-    javascript = context.get('javascript', '')
-    js_files = [j.strip() for j in javascript.split(',')]
-%>
-
-% for url in js_files:
-<script type="text/javascript" src="${url}"></script>
-% endfor
-
 </head>
 
 <body>
