@@ -5,7 +5,8 @@ from modicms import *
 
 logging.basicConfig(level=logging.INFO)
 
-output_root = '/var/www'
+bucket = 'splatest'
+NEVER = 'Thu, 01-Jan-1970 00:00:01 GMT'
 
 (
 
@@ -15,22 +16,22 @@ Scan('.') >> MatchPath()
                      ParseHeaders() >>
                      InterpretMarkdown() >>
                      WrapInMako('base.mako') >>
-                     WriteTo(output_root))
+                     WriteToS3(bucket, {'Content-Type': 'text/html; charset=utf-8'}))
 
     # compress js
     .match(r'github\.js$', Read() >>
                            IncludeJavascript() >>
                            CompressJavascript() >>
-                           WriteTo(output_root))
+                           WriteToS3(bucket))
 
     # turn clevercss into css
     .match(r'\.ccss$', Read() >>
                        ConvertCleverCSS() >>
-                       WriteTo(output_root))
+                       WriteToS3(bucket))
 
     # copy webfont files verbatim
-    .match(r'\.(svg|eot|ttf|woff)$', CopyTo(output_root))
+    .match(r'\.(svg|eot|ttf|woff)$', CopyToS3(bucket, {'Expires': NEVER}))
 
     # the favicon
-    .match('favicon.png$', CopyTo(output_root))
+    .match('favicon.png$', CopyToS3(bucket, {'Expires': NEVER}))
 )
