@@ -1,8 +1,6 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-
 <title><%block name="block_title">${title} - spladug.net</%block></title>
 
 <!--[if lt IE 9]>
