@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <title><%block name="block_title">${title} - spladug.net</%block></title>
 
