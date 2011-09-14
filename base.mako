@@ -61,7 +61,7 @@ menu = [
         if url == output_path:
             cls = 'class="active"'
     %>
-    <li><a href="${url}" id="link-${id}" ${cls}>${id}</a></li>
+    <li id="${id}"><a href="${url}" ${cls}>${id}</a></li>
 % endfor
 </ul>
 </nav>

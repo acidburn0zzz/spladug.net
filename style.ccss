@@ -26,10 +26,10 @@ h1, nav a:
     text-transform: uppercase
     font-family: `"FolkSolid"`
 
-h1 span:
-    display: inline-block
-    height: 0.7em
-    line-height: 1.15
+h1 > span:
+    display: block
+    line-height: 1
+    margin-bottom: -.1em
 
 #line-spladug:
     color: #ef4c29
@@ -58,31 +58,27 @@ header a, nav a:
     color: inherit
 
 nav:
+    display: block
     position: relative
-    height: 3em
-    margin-top: .5em
+    height: 4em
 
     ul:
-        list-style-type: none
         padding: 0
-        margin: 0
+
+    li:
+        list-style-type: none
 
     a:
         position: absolute
-        padding: 0
-        margin: 0
-        display: inline-block
+        top: 0
+        display: block
+        font-size: 82pt
+        line-height: 1
 
     a:hover:
         text-shadow: -2px -2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, 2px 2px 0 #000
 
-#link-about, #link-code:
-    top: 0
-    font-size: 82pt
-    height: .8em
-    line-height: 1.1
-
-a#link-about:
+#about a:
     left: 0
     color: $about_fuschia
 
@@ -90,7 +86,7 @@ a#link-about:
         color: black
         text-shadow: -2px -2px 0 $about_fuschia, -2px 2px 0 $about_fuschia, 2px -2px 0 $about_fuschia, 2px 2px 0 $about_fuschia
 
-a#link-code:
+#code a:
     right: 0
     color: $code_green
 
