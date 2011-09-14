@@ -31,7 +31,7 @@ Scan('.') >> MatchPath()
                        GzipContent() >>
                        WriteToS3(bucket))
 
-    # copy webfont files verbatim. compress everything but woff since it's already compressed
+    # copy webfont files compressing everything but woff since it's already compressed
     .match(r'\.(svg|eot|ttf)$', Read() >> GzipContent() >> WriteToS3(bucket, {'Expires': NEVER}))
     .match(r'\.woff$', CopyToS3(bucket, {'Expires': NEVER}))
 
