@@ -4,7 +4,7 @@ from modicms import *
 
 logging.basicConfig(level=logging.INFO)
 
-bucket = 'splatest'
+bucket = 'www.spladug.net'
 NEVER = 'Thu, 01-Jan-1970 00:00:01 GMT'
 
 (
