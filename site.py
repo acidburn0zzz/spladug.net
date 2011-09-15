@@ -1,11 +1,12 @@
 import logging
+import datetime
 
 from modicms import *
 
 logging.basicConfig(level=logging.INFO)
 
 bucket = 'www.spladug.net'
-NEVER = 'Thu, 01-Jan-1970 00:00:01 GMT'
+NEVER = 'Thu, 31 Dec 2037 23:59:59 GMT' 
 
 (
 
@@ -23,13 +24,13 @@ Scan('.') >> MatchPath()
                            IncludeJavascript() >>
                            CompressJavascript() >>
                            GzipContent() >>
-                           WriteToS3(bucket))
+                           WriteToS3(bucket, {'Expires': NEVER}))
 
     # turn clevercss into css
     .match(r'\.ccss$', Read() >>
                        ConvertCleverCSS() >>
                        GzipContent() >>
-                       WriteToS3(bucket))
+                       WriteToS3(bucket, {'Expires': NEVER}))
 
     # copy webfont files compressing everything but woff since it's already compressed
     .match(r'\.(svg|eot|ttf)$', Read() >> GzipContent() >> WriteToS3(bucket, {'Expires': NEVER}))
