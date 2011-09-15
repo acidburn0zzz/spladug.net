@@ -29,11 +29,13 @@ $(function (){
             $('.loading').remove();
 
             var repositories = data.repositories;
-            for (var i = repositories.length - 1; i >= 0; i--) {
-                var repository = repositories[i];
+            repositories.sort(function(a, b) {
+                return Date.parse(b.pushed_at) - Date.parse(a.pushed_at);
+            });
 
+            $.each(repositories, function (index, repository) {
                 if (repository.fork)
-                    continue;
+                    return true;
 
                 var section = $('<section>')
                                 .addClass('repository');
@@ -62,7 +64,7 @@ $(function (){
                 timeParagraph.appendTo(section);
 
                 section.insertBefore(footer);
-            }
+            });
         },
         'error': function () {
             $('.loading').remove();
