@@ -99,21 +99,36 @@ nav + *, footer:
     margin-top: 2em
     padding-top: 1em
 
+repository_color = $name_blue.darken(20)
 .repository:
     margin-bottom: 1em
+    border: 3px solid $repository_color
+    border-radius: 7px
 
     h1:
-        height: 1.5em
+        background-color: $repository_color
 
         a, a:visited:
-            color: $name_blue
+            color: white
             text-decoration: none
             font-size: 40pt
+            margin-left: 15px
 
-        a:before:
-            color: black
-            content: `">>>"`
-            margin-right: .25em
+    p:
+        margin: .5em 0
+        padding: 0 15px
+
+.last-updated:
+    font-size: smaller
+    font-style: italic
+
+.error:
+    color: #a00
+    background: #fdd
+    border: 3px solid #a00
+    margin: 2em
+    padding: 1em
+    border-radius: 7px
 
 footer:
     text-align: right
