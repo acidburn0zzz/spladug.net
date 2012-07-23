@@ -17,59 +17,46 @@ $(function (){
 
     var footer = $('footer');
 
-    $('<p>')
-        .addClass('loading')
+    $('<p class="loading">')
         .text('Loading...')
         .insertBefore(footer);
 
     $.ajax({
-        'url': 'http://github.com/api/v2/json/repos/show/spladug',
+        'url': 'https://api.github.com/users/spladug/repos?type=owner&sort=updated',
         'dataType': 'jsonp',
-        'success': function (data) {
+        'success': function (response) {
             $('.loading').remove();
 
-            var repositories = data.repositories;
-            repositories.sort(function(a, b) {
-                return Date.parse(b.pushed_at) - Date.parse(a.pushed_at);
-            });
+            var repositories = response.data;
 
             $.each(repositories, function (index, repository) {
                 if (repository.fork)
                     return true;
 
-                var section = $('<section>')
-                                .addClass('repository');
+                var lastUpdate = new Date(repository.updated_at);
 
-                var header = $('<h1>');
-                $('<a>')
-                    .attr('href', repository.url)
-                    .text(repository.name)
-                    .appendTo(header);
-                header.appendTo(section);
+                $('<section class="repository">').append(
+                    $('<h1>').append(
+                        $('<a href="' + repository.html_url + '">')
+                            .text(repository.name)
+                    ),
 
-                $('<p>')
-                    .addClass('description')
-                    .text(repository.description)
-                    .appendTo(section);
+                    $('<p class="description">')
+                        .text(repository.description),
 
-                var timeParagraph = $('<p>')
-                                        .addClass('last-updated')
-                                        .text('last updated ');
-                var lastPushTime = new Date(repository.pushed_at);
-                $('<time>')
-                    .addClass('last-pushed')
-                    .attr('datetime', ISODateString(lastPushTime))
-                    .timeago()
-                    .appendTo(timeParagraph);
-                timeParagraph.appendTo(section);
-
-                section.insertBefore(footer);
+                    $('<p class="last-updated">').append(
+                        'last updated ',
+                        $('<time class="last-pushed">')
+                            .attr('datetime', ISODateString(lastUpdate))
+                            .timeago()
+                    )
+                ).insertBefore(footer);
             });
         },
+
         'error': function () {
             $('.loading').remove();
-            $('<p>')
-                .addClass('error')
+            $('<p class="error">')
                 .text('Failed to fetch repository information from GitHub. Try refreshing?')
                 .insertBefore(footer);
         }
